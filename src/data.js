@@ -75,7 +75,7 @@ const musicProvider = () => {
     {
       name: "One Last Call",
       cover:
-        "https://chillhop.com/wp-content/uploads/2021/01/6b1bb8736ee3e972747bc11f312e31cf7f5823e4-1024x1024.jpg",
+        "https://chillhop.com/wp-content/uploads/2020/09/09fb436604242df99f84b9f359acb046e40d2e9e-1024x1024.jpg",
       artist: "Nymano, Kanisan, Mau",
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10134",
       color: ["#191514", "#605786"],

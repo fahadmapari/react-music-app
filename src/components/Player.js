@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { playAudio } from "../utils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -20,22 +19,24 @@ const Player = ({
   setSongs,
 }) => {
   useEffect(() => {
-    const newSongs = songs.map((stateSongs) => {
-      if (stateSongs.id === currentSong.id) {
-        return {
-          ...stateSongs,
-          active: true,
-        };
-      } else {
-        return {
-          ...stateSongs,
-          active: false,
-        };
-      }
-    });
+    (async () => {
+      const newSongs = songs.map((stateSongs) => {
+        if (stateSongs.id === currentSong.id) {
+          return {
+            ...stateSongs,
+            active: true,
+          };
+        } else {
+          return {
+            ...stateSongs,
+            active: false,
+          };
+        }
+      });
 
-    setSongs(newSongs);
-    playAudio(isPlaying, audioRef);
+      setSongs(newSongs);
+      if (isPlaying) audioRef.current.play();
+    })();
     // eslint-disable-next-line
   }, [currentSong]);
 
@@ -63,6 +64,10 @@ const Player = ({
     );
   };
 
+  const trackStyles = {
+    transform: `translateX(${songInfo.animationPer}%)`,
+  };
+
   const skipTrackHandler = (direction) => {
     const currentIndex = songs.findIndex((song) => song.id === currentSong.id);
     switch (direction) {
@@ -85,13 +90,21 @@ const Player = ({
     <div className="player">
       <div className="time-control">
         <p>{formatTime(songInfo.current)}</p>
-        <input
-          type="range"
-          min={0}
-          max={songInfo.duration || 0}
-          value={songInfo.current}
-          onChange={songSliderHandler}
-        />
+        <div
+          style={{
+            background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`,
+          }}
+          className="track"
+        >
+          <input
+            type="range"
+            min={0}
+            max={songInfo.duration || 0}
+            value={songInfo.current}
+            onChange={songSliderHandler}
+          />
+          <div style={trackStyles} className="animated-track"></div>
+        </div>
         <p>{formatTime(songInfo.duration || 0)}</p>
       </div>
       <div className="play-control">
