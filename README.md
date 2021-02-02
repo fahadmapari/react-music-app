@@ -4,7 +4,7 @@
 
 ## Screenshot
 
-![screenshot](https://imgur.com/a/VKz5oYZ);
+![screenshot](https://imgur.com/a/VKz5oYZ)
 
 # Getting Started with Create React App
 
