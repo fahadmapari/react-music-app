@@ -2,6 +2,10 @@
 
 [https://listen-close.netlify.app/](https://listen-close.netlify.app/)
 
+## Screenshot
+
+![screenshot](https://imgur.com/a/VKz5oYZ);
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
